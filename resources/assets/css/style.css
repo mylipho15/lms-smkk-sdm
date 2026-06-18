@@ -1,0 +1,713 @@
+/**
+ * Main Stylesheet - LMS SMK Kesehatan SDM Sumedang
+ * Theme: Claymorphism with Light/Dark Mode Support
+ */
+
+/* ============================================
+   CSS VARIABLES (Custom Properties)
+   ============================================ */
+
+:root {
+    /* Light Mode Colors */
+    --primary-color: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --secondary-color: #ec4899;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    
+    /* Background Colors */
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e2e8f0;
+    
+    /* Text Colors */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    
+    /* Border Colors */
+    --border-color: #cbd5e1;
+    --border-light: #e2e8f0;
+    
+    /* Shadow Colors */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-inner: rgba(255, 255, 255, 0.8);
+    
+    /* Claymorphism Shadows */
+    --clay-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.1),
+        -8px -8px 16px rgba(255, 255, 255, 0.8),
+        inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.05);
+    
+    --clay-shadow-hover: 
+        12px 12px 20px rgba(0, 0, 0, 0.12),
+        -12px -12px 20px rgba(255, 255, 255, 0.9),
+        inset 6px 6px 10px rgba(255, 255, 255, 0.6),
+        inset -6px -6px 10px rgba(0, 0, 0, 0.08);
+    
+    --clay-shadow-active: 
+        inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+    
+    --inner-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.08),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Font Family */
+    --font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --primary-light: #a5b4fc;
+    --primary-dark: #6366f1;
+    
+    /* Background Colors */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    
+    /* Text Colors */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Border Colors */
+    --border-color: #475569;
+    --border-light: #334155;
+    
+    /* Shadow Colors */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-inner: rgba(255, 255, 255, 0.05);
+    
+    /* Claymorphism Shadows for Dark Mode */
+    --clay-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        -8px -8px 16px rgba(255, 255, 255, 0.05),
+        inset 4px 4px 8px rgba(255, 255, 255, 0.05),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.3);
+    
+    --clay-shadow-hover: 
+        12px 12px 20px rgba(0, 0, 0, 0.5),
+        -12px -12px 20px rgba(255, 255, 255, 0.08),
+        inset 6px 6px 10px rgba(255, 255, 255, 0.08),
+        inset -6px -6px 10px rgba(0, 0, 0, 0.4);
+    
+    --clay-shadow-active: 
+        inset 6px 6px 12px rgba(0, 0, 0, 0.4),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.05);
+    
+    --inner-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* ============================================
+   CLAYMORPHISM COMPONENTS
+   ============================================ */
+
+/* Clay Card */
+.clay-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--clay-shadow);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+}
+
+.clay-card:hover {
+    box-shadow: var(--clay-shadow-hover);
+}
+
+/* Clay Button */
+.clay-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--clay-shadow);
+}
+
+.clay-btn:active {
+    box-shadow: var(--clay-shadow-active);
+    transform: scale(0.98);
+}
+
+.clay-btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.clay-btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.clay-btn-secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #db2777);
+    color: white;
+}
+
+.clay-btn-success {
+    background: linear-gradient(135deg, var(--success-color), #059669);
+    color: white;
+}
+
+.clay-btn-danger {
+    background: linear-gradient(135deg, var(--danger-color), #dc2626);
+    color: white;
+}
+
+.clay-btn-outline {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.clay-btn-sm {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.85rem;
+}
+
+.clay-btn-lg {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.1rem;
+}
+
+/* Clay Input */
+.clay-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--inner-shadow);
+    transition: all var(--transition-fast);
+}
+
+.clay-input:focus {
+    outline: none;
+    box-shadow: 
+        var(--inner-shadow),
+        0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.clay-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Clay Select */
+.clay-select {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--inner-shadow);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.clay-select:focus {
+    outline: none;
+    box-shadow: 
+        var(--inner-shadow),
+        0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Clay Table */
+.clay-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--clay-shadow);
+}
+
+.clay-table th,
+.clay-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+}
+
+.clay-table th {
+    background: var(--bg-tertiary);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.clay-table tr:not(:last-child) td {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.clay-table tr:hover td {
+    background: var(--bg-tertiary);
+}
+
+/* ============================================
+   LAYOUT COMPONENTS
+   ============================================ */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Flexbox Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+
+/* ============================================
+   DASHBOARD COMPONENTS
+   ============================================ */
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--bg-secondary);
+    box-shadow: var(--clay-shadow);
+    padding: var(--spacing-lg);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform var(--transition-normal);
+}
+
+.sidebar-header {
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu-item {
+    margin-bottom: var(--spacing-sm);
+}
+
+.sidebar-menu-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-menu-link:hover,
+.sidebar-menu-link.active {
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+    box-shadow: var(--inner-shadow);
+}
+
+.sidebar-menu-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 280px;
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    transition: margin-left var(--transition-normal);
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--clay-shadow);
+    margin-bottom: var(--spacing-lg);
+}
+
+.topbar-search {
+    flex: 1;
+    max-width: 400px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--clay-shadow);
+    transition: all var(--transition-normal);
+}
+
+.stat-card:hover {
+    box-shadow: var(--clay-shadow-hover);
+    transform: translateY(-4px);
+}
+
+.stat-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.stat-card-icon.primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.stat-card-icon.success {
+    background: linear-gradient(135deg, var(--success-color), #059669);
+    color: white;
+}
+
+.stat-card-icon.warning {
+    background: linear-gradient(135deg, var(--warning-color), #d97706);
+    color: white;
+}
+
+.stat-card-icon.danger {
+    background: linear-gradient(135deg, var(--danger-color), #dc2626);
+    color: white;
+}
+
+.stat-card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.stat-card-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+
+.theme-toggle {
+    width: 60px;
+    height: 30px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+    position: relative;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    box-shadow: var(--inner-shadow);
+}
+
+.theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: transform var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle::after {
+    transform: translateX(30px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .topbar {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    
+    .topbar-search {
+        max-width: 100%;
+        order: 2;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: var(--radius-full); }
+
+.shadow-clay { box-shadow: var(--clay-shadow); }
+.shadow-inner { box-shadow: var(--inner-shadow); }
+
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+.cursor-pointer { cursor: pointer; }
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn var(--transition-normal) ease;
+}
+
+.animate-slideUp {
+    animation: slideUp var(--transition-slow) ease;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .sidebar,
+    .topbar,
+    .no-print {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .clay-card,
+    .clay-table {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

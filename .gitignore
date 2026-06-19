@@ -1,46 +1,33 @@
 ```
 # Dependencies
 vendor/
-composer.lock
 
-# Logs
-storage/logs/
+# Logs and temp files
 *.log
-
-# Cache
-storage/cache/
+*.tmp
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Uploads
-storage/uploads/
-
-# Compiled/Build artifacts
+# Compiled and build artifacts
 *.o
 *.obj
-*.out
+dist/
+build/
+
+# Cache directories
+.cache/
+.php_cs.cache
 
 # Editor/IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# PHP specific
-*.php~
-**/vendor/**/*
-!vendor/**
 ```

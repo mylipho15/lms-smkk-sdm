@@ -1,5 +1,5 @@
 {
-    "name": "lms-smkk-sdm",
+    "name": "smkk-sdm/lms",
     "description": "Learning Management System untuk SMK Kesehatan SDM Sumedang",
     "type": "project",
     "license": "MIT",
@@ -18,5 +18,7 @@
         {
             "name": "SMK Kesehatan SDM Sumedang"
         }
-    ]
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

@@ -1,6 +1,7 @@
 ```
 # Dependencies
 vendor/
+composer.lock
 
 # Logs and temp files
 *.log
@@ -11,21 +12,9 @@ vendor/
 .env.local
 *.env.*
 
-# Compiled and build artifacts
-*.o
-*.obj
-dist/
-build/
-
-# Cache directories
-.cache/
-.php_cs.cache
-
-# Editor/IDE
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
 
 # OS generated files
 .DS_Store

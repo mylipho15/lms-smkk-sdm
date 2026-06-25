@@ -22,7 +22,8 @@ return [
     
     'app' => [
         'name' => 'LMS SMK Kesehatan SDM Sumedang',
-        'url' => 'http://localhost/lms-smk',
+        'url' => 'http://localhost/lms-smkk-sdm',
+        'base_path' => '/lms-smkk-sdm',
         'timezone' => 'Asia/Jakarta',
         'locale' => 'id_ID',
     ],

@@ -3,6 +3,8 @@
  * Session Management and Authentication Helper
  */
 
+require_once __DIR__ . '/../config/helpers.php';
+
 class Auth {
     private static $instance = null;
     
@@ -150,9 +152,10 @@ class Auth {
     /**
      * Require authentication, redirect to login if not authenticated
      */
-    public function requireLogin($redirectUrl = '/auth/login.php') {
+    public function requireLogin($redirectUrl = null) {
         if (!$this->check()) {
-            header("Location: {$redirectUrl}");
+            $url = $redirectUrl ?? url('auth/login.php');
+            header("Location: {$url}");
             exit;
         }
     }
@@ -160,11 +163,12 @@ class Auth {
     /**
      * Require specific role, redirect if not authorized
      */
-    public function requireRole($roles, $redirectUrl = '/unauthorized.php') {
+    public function requireRole($roles, $redirectUrl = null) {
         $this->requireLogin();
         
         if (!$this->hasRole($roles)) {
-            header("Location: {$redirectUrl}");
+            $url = $redirectUrl ?? url('unauthorized.php');
+            header("Location: {$url}");
             exit;
         }
     }

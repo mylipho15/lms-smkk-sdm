@@ -16,12 +16,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Load helpers for URL generation
+require_once __DIR__ . '/config/helpers.php';
+
 // Check if user is logged in, redirect to dashboard or login
 require_once __DIR__ . '/middleware/Auth.php';
 
 if (auth()->check()) {
-    header('Location: /dashboard.php');
+    redirect('/dashboard.php');
 } else {
-    header('Location: /auth/login.php');
+    redirect('/auth/login.php');
 }
 exit;

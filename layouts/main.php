@@ -1,3 +1,8 @@
+<?php
+// Get base path from config
+require_once __DIR__ . '/../config/helpers.php';
+$basePath = BASE_PATH;
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -22,7 +27,7 @@
             </button>
             
             <!-- Brand -->
-            <a href="<?= url('dashboard.php') ?>" class="navbar-brand">
+            <a href="<?= $basePath ?>/dashboard.php" class="navbar-brand">
                 🏫 LMS SMK Kesehatan SDM
             </a>
         </div>
@@ -33,7 +38,7 @@
                 <div class="theme-toggle" title="Ganti Tema"></div>
             </li>
             <li class="nav-item">
-                <a href="<?= url('notifications.php') ?>" class="nav-link">
+                <a href="<?= $basePath ?>/notifications.php" class="nav-link">
                     🔔
                     <?php if (isset($unreadNotifications) && $unreadNotifications > 0): ?>
                         <span class="badge badge-danger" style="font-size: 0.65rem; padding: 0.2rem 0.4rem;">
@@ -43,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= url('messages.php') ?>" class="nav-link">
+                <a href="<?= $basePath ?>/messages.php" class="nav-link">
                     ✉️
                     <?php if (isset($unreadMessages) && $unreadMessages > 0): ?>
                         <span class="badge badge-primary" style="font-size: 0.65rem; padding: 0.2rem 0.4rem;">
@@ -60,14 +65,14 @@
                     </span>
                 </a>
                 <div class="dropdown-menu clay-card-flat" style="position: absolute; right: 0; top: 100%; min-width: 200px; display: none; box-shadow: var(--clay-shadow-heavy);">
-                    <a href="<?= url('profile.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm);">
+                    <a href="<?= $basePath ?>/profile.php" class="nav-link" style="border-radius: var(--clay-radius-sm);">
                         👤 Profil Saya
                     </a>
-                    <a href="<?= url('settings.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm);">
+                    <a href="<?= $basePath ?>/settings.php" class="nav-link" style="border-radius: var(--clay-radius-sm);">
                         ⚙️ Pengaturan
                     </a>
                     <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid var(--border-color);">
-                    <a href="<?= url('auth/logout.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm); color: var(--danger);">
+                    <a href="<?= $basePath ?>/auth/logout.php" class="nav-link" style="border-radius: var(--clay-radius-sm); color: var(--danger);">
                         🚪 Keluar
                     </a>
                 </div>

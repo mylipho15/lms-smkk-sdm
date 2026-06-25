@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?? 'Dashboard' ?> - LMS SMK Kesehatan SDM Sumedang</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
     <!-- Additional page-specific styles can be added here -->
     <?php if (isset($additionalStyles)): ?>
         <?php foreach ($additionalStyles as $style): ?>
@@ -22,7 +22,7 @@
             </button>
             
             <!-- Brand -->
-            <a href="/dashboard.php" class="navbar-brand">
+            <a href="<?= url('dashboard.php') ?>" class="navbar-brand">
                 🏫 LMS SMK Kesehatan SDM
             </a>
         </div>
@@ -33,7 +33,7 @@
                 <div class="theme-toggle" title="Ganti Tema"></div>
             </li>
             <li class="nav-item">
-                <a href="/notifications.php" class="nav-link">
+                <a href="<?= url('notifications.php') ?>" class="nav-link">
                     🔔
                     <?php if (isset($unreadNotifications) && $unreadNotifications > 0): ?>
                         <span class="badge badge-danger" style="font-size: 0.65rem; padding: 0.2rem 0.4rem;">
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/messages.php" class="nav-link">
+                <a href="<?= url('messages.php') ?>" class="nav-link">
                     ✉️
                     <?php if (isset($unreadMessages) && $unreadMessages > 0): ?>
                         <span class="badge badge-primary" style="font-size: 0.65rem; padding: 0.2rem 0.4rem;">
@@ -60,14 +60,14 @@
                     </span>
                 </a>
                 <div class="dropdown-menu clay-card-flat" style="position: absolute; right: 0; top: 100%; min-width: 200px; display: none; box-shadow: var(--clay-shadow-heavy);">
-                    <a href="/profile.php" class="nav-link" style="border-radius: var(--clay-radius-sm);">
+                    <a href="<?= url('profile.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm);">
                         👤 Profil Saya
                     </a>
-                    <a href="/settings.php" class="nav-link" style="border-radius: var(--clay-radius-sm);">
+                    <a href="<?= url('settings.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm);">
                         ⚙️ Pengaturan
                     </a>
                     <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid var(--border-color);">
-                    <a href="/auth/logout.php" class="nav-link" style="border-radius: var(--clay-radius-sm); color: var(--danger);">
+                    <a href="<?= url('auth/logout.php') ?>" class="nav-link" style="border-radius: var(--clay-radius-sm); color: var(--danger);">
                         🚪 Keluar
                     </a>
                 </div>
@@ -103,7 +103,7 @@
     </main>
     
     <!-- Scripts -->
-    <script src="/assets/js/app.js"></script>
+    <script src="<?= asset('assets/js/app.js') ?>"></script>
     <?php if (isset($additionalScripts)): ?>
         <?php foreach ($additionalScripts as $script): ?>
             <script src="<?= $script ?>"></script>

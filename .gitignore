@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes, as they consist only of source code and configuration files (.php, .css, .js, .sql, .md).
+Nothing needs to be added to the .gitignore file based on the provided changes, as they consist only of PHP source files and configuration files without any build artifacts, dependencies, or temporary files.

@@ -4,12 +4,13 @@
  * LMS SMK Kesehatan SDM Sumedang
  */
 
+require_once __DIR__ . '/config/helpers.php';
 require_once __DIR__ . '/models/Database.php';
 require_once __DIR__ . '/models/User.php';
 require_once __DIR__ . '/middleware/Auth.php';
 
 // Require authentication
-auth()->requireLogin('/auth/login.php');
+auth()->requireLogin();
 
 $user = auth()->user();
 $userId = auth()->id();
@@ -166,62 +167,62 @@ include __DIR__ . '/layouts/main.php';
 function generateSidebarMenu($role) {
     $menus = [
         'super_admin' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/admin/users.php" class="sidebar-link">👥 Manajemen User</a></li>
-            <li class="sidebar-item"><a href="/admin/roles.php" class="sidebar-link">🔐 Role & Akses</a></li>
-            <li class="sidebar-item"><a href="/admin/backup.php" class="sidebar-link">💾 Backup/Restore</a></li>
-            <li class="sidebar-item"><a href="/admin/settings.php" class="sidebar-link">⚙️ Konfigurasi</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/users.php') ?>" class="sidebar-link">👥 Manajemen User</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/roles.php') ?>" class="sidebar-link">🔐 Role & Akses</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/backup.php') ?>" class="sidebar-link">💾 Backup/Restore</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/settings.php') ?>" class="sidebar-link">⚙️ Konfigurasi</a></li>
         ',
         'admin_sekolah' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/admin/tahun-ajaran.php" class="sidebar-link">📅 Tahun Ajaran</a></li>
-            <li class="sidebar-item"><a href="/admin/jurusan.php" class="sidebar-link">🎓 Jurusan</a></li>
-            <li class="sidebar-item"><a href="/admin/kelas.php" class="sidebar-link">🏫 Kelas</a></li>
-            <li class="sidebar-item"><a href="/admin/guru.php" class="sidebar-link">👨‍🏫 Guru</a></li>
-            <li class="sidebar-item"><a href="/admin/siswa.php" class="sidebar-link">👨‍🎓 Siswa</a></li>
-            <li class="sidebar-item"><a href="/admin/jadwal.php" class="sidebar-link">📋 Jadwal</a></li>
-            <li class="sidebar-item"><a href="/admin/pengumuman.php" class="sidebar-link">📢 Pengumuman</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/tahun-ajaran.php') ?>" class="sidebar-link">📅 Tahun Ajaran</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/jurusan.php') ?>" class="sidebar-link">🎓 Jurusan</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/kelas.php') ?>" class="sidebar-link">🏫 Kelas</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/guru.php') ?>" class="sidebar-link">👨‍🏫 Guru</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/siswa.php') ?>" class="sidebar-link">👨‍🎓 Siswa</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/jadwal.php') ?>" class="sidebar-link">📋 Jadwal</a></li>
+            <li class="sidebar-item"><a href="<?= url('admin/pengumuman.php') ?>" class="sidebar-link">📢 Pengumuman</a></li>
         ',
         'guru' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/guru/kursus.php" class="sidebar-link">📚 Kursus</a></li>
-            <li class="sidebar-item"><a href="/guru/materi.php" class="sidebar-link">📖 Materi</a></li>
-            <li class="sidebar-item"><a href="/guru/tugas.php" class="sidebar-link">📝 Tugas</a></li>
-            <li class="sidebar-item"><a href="/guru/kuis.php" class="sidebar-link">❓ Kuis</a></li>
-            <li class="sidebar-item"><a href="/guru/absensi.php" class="sidebar-link">✅ Absensi</a></li>
-            <li class="sidebar-item"><a href="/guru/nilai.php" class="sidebar-link">📈 Nilai</a></li>
-            <li class="sidebar-item"><a href="/guru/forum.php" class="sidebar-link">💬 Forum</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/kursus.php') ?>" class="sidebar-link">📚 Kursus</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/materi.php') ?>" class="sidebar-link">📖 Materi</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/tugas.php') ?>" class="sidebar-link">📝 Tugas</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/kuis.php') ?>" class="sidebar-link">❓ Kuis</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/absensi.php') ?>" class="sidebar-link">✅ Absensi</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/nilai.php') ?>" class="sidebar-link">📈 Nilai</a></li>
+            <li class="sidebar-item"><a href="<?= url('guru/forum.php') ?>" class="sidebar-link">💬 Forum</a></li>
         ',
         'siswa' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/siswa/kursus.php" class="sidebar-link">📚 Kursus Saya</a></li>
-            <li class="sidebar-item"><a href="/siswa/tugas.php" class="sidebar-link">📝 Tugas</a></li>
-            <li class="sidebar-item"><a href="/siswa/kuis.php" class="sidebar-link">❓ Kuis</a></li>
-            <li class="sidebar-item"><a href="/siswa/nilai.php" class="sidebar-link">📈 Nilai</a></li>
-            <li class="sidebar-item"><a href="/siswa/absensi.php" class="sidebar-link">✅ Kehadiran</a></li>
-            <li class="sidebar-item"><a href="/siswa/logbook.php" class="sidebar-link">📔 Logbook PKL</a></li>
-            <li class="sidebar-item"><a href="/siswa/forum.php" class="sidebar-link">💬 Forum</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/kursus.php') ?>" class="sidebar-link">📚 Kursus Saya</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/tugas.php') ?>" class="sidebar-link">📝 Tugas</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/kuis.php') ?>" class="sidebar-link">❓ Kuis</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/nilai.php') ?>" class="sidebar-link">📈 Nilai</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/absensi.php') ?>" class="sidebar-link">✅ Kehadiran</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/logbook.php') ?>" class="sidebar-link">📔 Logbook PKL</a></li>
+            <li class="sidebar-item"><a href="<?= url('siswa/forum.php') ?>" class="sidebar-link">💬 Forum</a></li>
         ',
         'orang_tua' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/ortu/anak.php" class="sidebar-link">👨‍🎓 Data Anak</a></li>
-            <li class="sidebar-item"><a href="/ortu/nilai.php" class="sidebar-link">📈 Nilai</a></li>
-            <li class="sidebar-item"><a href="/ortu/absensi.php" class="sidebar-link">✅ Kehadiran</a></li>
-            <li class="sidebar-item"><a href="/ortu/pesan.php" class="sidebar-link">✉️ Pesan</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('ortu/anak.php') ?>" class="sidebar-link">👨‍🎓 Data Anak</a></li>
+            <li class="sidebar-item"><a href="<?= url('ortu/nilai.php') ?>" class="sidebar-link">📈 Nilai</a></li>
+            <li class="sidebar-item"><a href="<?= url('ortu/absensi.php') ?>" class="sidebar-link">✅ Kehadiran</a></li>
+            <li class="sidebar-item"><a href="<?= url('ortu/pesan.php') ?>" class="sidebar-link">✉️ Pesan</a></li>
         ',
         'kepala_sekolah' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard Analitik</a></li>
-            <li class="sidebar-item"><a href="/kepalasekolah/laporan.php" class="sidebar-link">📄 Laporan</a></li>
-            <li class="sidebar-item"><a href="/kepalasekolah/akreditasi.php" class="sidebar-link">🏆 Akreditasi</a></li>
-            <li class="sidebar-item"><a href="/kepalasekolah/kompetensi.php" class="sidebar-link">🎯 Kompetensi</a></li>
-            <li class="sidebar-item"><a href="/kepalasekolah/kelulusan.php" class="sidebar-link">🎓 Kelulusan</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard Analitik</a></li>
+            <li class="sidebar-item"><a href="<?= url('kepalasekolah/laporan.php') ?>" class="sidebar-link">📄 Laporan</a></li>
+            <li class="sidebar-item"><a href="<?= url('kepalasekolah/akreditasi.php') ?>" class="sidebar-link">🏆 Akreditasi</a></li>
+            <li class="sidebar-item"><a href="<?= url('kepalasekolah/kompetensi.php') ?>" class="sidebar-link">🎯 Kompetensi</a></li>
+            <li class="sidebar-item"><a href="<?= url('kepalasekolah/kelulusan.php') ?>" class="sidebar-link">🎓 Kelulusan</a></li>
         ',
         'mentor_industri' => '
-            <li class="sidebar-item"><a href="/dashboard.php" class="sidebar-link active">📊 Dashboard</a></li>
-            <li class="sidebar-item"><a href="/mentor/peserta.php" class="sidebar-link">👨‍🎓 Peserta PKL</a></li>
-            <li class="sidebar-item"><a href="/mentor/logbook.php" class="sidebar-link">📔 Verifikasi Logbook</a></li>
-            <li class="sidebar-item"><a href="/mentor/penilaian.php" class="sidebar-link">⭐ Penilaian</a></li>
-            <li class="sidebar-item"><a href="/mentor/sertifikat.php" class="sidebar-link">📜 Sertifikat</a></li>
+            <li class="sidebar-item"><a href="<?= url('dashboard.php') ?>" class="sidebar-link active">📊 Dashboard</a></li>
+            <li class="sidebar-item"><a href="<?= url('mentor/peserta.php') ?>" class="sidebar-link">👨‍🎓 Peserta PKL</a></li>
+            <li class="sidebar-item"><a href="<?= url('mentor/logbook.php') ?>" class="sidebar-link">📔 Verifikasi Logbook</a></li>
+            <li class="sidebar-item"><a href="<?= url('mentor/penilaian.php') ?>" class="sidebar-link">⭐ Penilaian</a></li>
+            <li class="sidebar-item"><a href="<?= url('mentor/sertifikat.php') ?>" class="sidebar-link">📜 Sertifikat</a></li>
         '
     ];
     
@@ -273,13 +274,13 @@ function getStatLabel($key) {
  */
 function getQuickActions($role) {
     $actions = [
-        'super_admin' => '<a href="/admin/users.php" class="clay-btn clay-btn-primary clay-btn-sm">👥 User</a><a href="/admin/settings.php" class="clay-btn clay-btn-sm">⚙️ Settings</a>',
-        'admin_sekolah' => '<a href="/admin/siswa.php" class="clay-btn clay-btn-primary clay-btn-sm">➕ Siswa Baru</a><a href="/admin/pengumuman.php" class="clay-btn clay-btn-sm">📢 Pengumuman</a>',
-        'guru' => '<a href="/guru/tugas/create.php" class="clay-btn clay-btn-primary clay-btn-sm">➕ Buat Tugas</a><a href="/guru/absensi.php" class="clay-btn clay-btn-sm">✅ Input Absen</a>',
-        'siswa' => '<a href="/siswa/tugas.php" class="clay-btn clay-btn-primary clay-btn-sm">📝 Kerjakan Tugas</a><a href="/siswa/kuis.php" class="clay-btn clay-btn-sm">❓ Kuis</a>',
-        'orang_tua' => '<a href="/ortu/pesan.php" class="clay-btn clay-btn-primary clay-btn-sm">✉️ Kirim Pesan</a>',
-        'kepala_sekolah' => '<a href="/kepalasekolah/laporan.php" class="clay-btn clay-btn-primary clay-btn-sm">📄 Lihat Laporan</a>',
-        'mentor_industri' => '<a href="/mentor/penilaian.php" class="clay-btn clay-btn-primary clay-btn-sm">⭐ Beri Nilai</a>'
+        'super_admin' => '<a href="<?= url('admin/users.php" class="clay-btn clay-btn-primary clay-btn-sm">👥 User</a><a href="<?= url('admin/settings.php" class="clay-btn clay-btn-sm">⚙️ Settings</a>',
+        'admin_sekolah' => '<a href="<?= url('admin/siswa.php" class="clay-btn clay-btn-primary clay-btn-sm">➕ Siswa Baru</a><a href="<?= url('admin/pengumuman.php" class="clay-btn clay-btn-sm">📢 Pengumuman</a>',
+        'guru' => '<a href="<?= url('guru/tugas/create.php" class="clay-btn clay-btn-primary clay-btn-sm">➕ Buat Tugas</a><a href="<?= url('guru/absensi.php" class="clay-btn clay-btn-sm">✅ Input Absen</a>',
+        'siswa' => '<a href="<?= url('siswa/tugas.php" class="clay-btn clay-btn-primary clay-btn-sm">📝 Kerjakan Tugas</a><a href="<?= url('siswa/kuis.php" class="clay-btn clay-btn-sm">❓ Kuis</a>',
+        'orang_tua' => '<a href="<?= url('ortu/pesan.php" class="clay-btn clay-btn-primary clay-btn-sm">✉️ Kirim Pesan</a>',
+        'kepala_sekolah' => '<a href="<?= url('kepalasekolah/laporan.php" class="clay-btn clay-btn-primary clay-btn-sm">📄 Lihat Laporan</a>',
+        'mentor_industri' => '<a href="<?= url('mentor/penilaian.php" class="clay-btn clay-btn-primary clay-btn-sm">⭐ Beri Nilai</a>'
     ];
     return $actions[$role] ?? '';
 }

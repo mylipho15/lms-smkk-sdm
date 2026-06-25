@@ -4,14 +4,14 @@
  * LMS SMK Kesehatan SDM Sumedang
  */
 
+require_once __DIR__ . '/../config/helpers.php';
 require_once __DIR__ . '/../models/Database.php';
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../middleware/Auth.php';
 
 // Redirect if already logged in
 if (auth()->check()) {
-    header('Location: /dashboard.php');
-    exit;
+    redirect('dashboard.php');
 }
 
 $error = '';
@@ -33,19 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Set redirect based on role
             $redirects = [
-                'super_admin' => '/dashboard.php',
-                'admin_sekolah' => '/admin/dashboard.php',
-                'guru' => '/guru/dashboard.php',
-                'wali_kelas' => '/guru/dashboard.php',
-                'siswa' => '/siswa/dashboard.php',
-                'orang_tua' => '/ortu/dashboard.php',
-                'kepala_sekolah' => '/kepalasekolah/dashboard.php',
-                'mentor_industri' => '/mentor/dashboard.php'
+                'super_admin' => 'dashboard.php',
+                'admin_sekolah' => 'admin/dashboard.php',
+                'guru' => 'guru/dashboard.php',
+                'wali_kelas' => 'guru/dashboard.php',
+                'siswa' => 'siswa/dashboard.php',
+                'orang_tua' => 'ortu/dashboard.php',
+                'kepala_sekolah' => 'kepalasekolah/dashboard.php',
+                'mentor_industri' => 'mentor/dashboard.php'
             ];
             
-            $redirect = $redirects[$user['role']] ?? '/dashboard.php';
-            header("Location: {$redirect}");
-            exit;
+            $redirect = $redirects[$user['role']] ?? 'dashboard.php';
+            redirect($redirect);
         } else {
             $error = 'Username atau password salah';
         }
@@ -58,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - LMS SMK Kesehatan SDM Sumedang</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
     <style>
         .login-container {
             min-height: 100vh;
@@ -180,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="checkbox" name="remember" style="width: auto;">
                             <span style="font-size: 0.875rem; color: var(--text-muted);">Ingat saya</span>
                         </label>
-                        <a href="/auth/forgot-password.php" style="font-size: 0.875rem;">Lupa password?</a>
+                        <a href="<?= url('auth/forgot-password.php') ?>" style="font-size: 0.875rem;">Lupa password?</a>
                     </div>
                     
                     <button type="submit" class="clay-btn clay-btn-primary clay-btn-block clay-btn-lg">
@@ -212,6 +211,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     
-    <script src="/assets/js/app.js"></script>
+    <script src="<?= asset('assets/js/app.js') ?>"></script>
 </body>
 </html>
